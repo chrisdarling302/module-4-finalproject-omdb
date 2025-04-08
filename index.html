@@ -6,26 +6,27 @@
     <title>Document</title>
     <link rel="stylesheet" href="styles.css">
     <script src="index.js" defer></script>
+    <script src="https://kit.fontawesome.com/54f426de4c.js" crossorigin="anonymous"></script>
   </head>
   <body>
     <div class="container">
       <div class="row">
         <nav>
-          <div class="row nav__row">
+          <div class="nav__row">
             <div class="nav__logo">
               <img
                 class="nav__logo--img"
-                src=""
+                src="./assets/M-logo.png"
                 alt=""
               />
               <div class="nav__logo--title">Movies</div>
             </div>
             <ul class="nav__links">
               <li>
-                <a href="#" class="nav__link">Home</a>
+                <a href="#" class="nav__link link__hover-effect">Home</a>
               </li>
               <li>
-                <a href="#" class="nav__link">Search Movies</a>
+                <a href="#" class="nav__link link__hover-effect">Search Movies</a>
               </li>
               <li>
                 <a href="#" class="nav__link">Contact</a>
@@ -36,8 +37,10 @@
         <div class="search__wrapper">
             <h1>Browse Movies</h1>
             <div class="search__wrapper--input">
-                <input type="text" placeholder="search by keyword">
-                <div class="search__wrapper--icon"></div>
+                <input type="text" placeholder="search by keyword" class="search__input">
+                <div class="search__wrapper--icon">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
             </div>
         </div>
       </div>
