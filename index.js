@@ -3,9 +3,13 @@
 // http://img.omdbapi.com/?apikey=[yourkey]&
 
 async function main() {
-        const search = await fetch("http://www.omdbapi.com/?apikey=9afe3bdf&s=fast")
-        const searchData = await search.json(); //need to await this to convert the back end to the front end readable
-        console.log(search)
+        const movies = await fetch("http://www.omdbapi.com/?apikey=9afe3bdf&")
+        const moviesData = await movies.json(); //need to await this to convert the back end to the front end readable
+        console.log(movies);
     }
     
     main();
+
+    function showMovies() {
+        console.log(movies);
+    }
