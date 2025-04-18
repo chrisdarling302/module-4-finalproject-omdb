@@ -12,93 +12,63 @@
     ></script>
   </head>
   <body>
-    <div class="wrapper">
-      <!-- logo -->
-
-      <div class="logo">
-        <div class="container">
-          <div class="row">
-            <p>Movie<span>Buff.</span></p>
-            <nav>
-              <div class="nav__row">
-                <ul class="nav__links">
-                  <li>
-                    <a href="#" class="nav__link link__hover-effect">Home</a>
-                  </li>
-                  <li>
-                    <a href="#" class="nav__link link__hover-effect"
-                      >Search Movies</a
-                    >
-                  </li>
-                  <li>
-                    <a href="#" class="nav__link nav__link--primary">Contact</a>
-                  </li>
-                </ul>
-              </div>
-            </nav>
+    <div class="container">
+      <div class="row">
+        <nav>
+          <div class="nav__row">
+            <div class="nav__logo">
+              <img class="nav__logo--img" src="./assets/M-logo.png" alt="" />
+              <div class="nav__logo--title">MovieBuff</div>
+            </div>
+            <ul class="nav__links">
+              <li>
+                <a href="#" class="nav__link link__hover-effect">Home</a>
+              </li>
+              <li>
+                <a href="#" class="nav__link link__hover-effect"
+                  >Search Movies</a
+                >
+              </li>
+              <li>
+                <a href="#" class="nav__link nav__link--primary">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <div class="search__wrapper">
+          <h1 class="search__heading">Browse Movies</h1>
+          <div class="search__wrapper--input">
+            <input
+              type="text"
+              id="searchInput"
+              onclick="displayMovieList()"
+              placeholder="search by keyword"
+              class="search__input"
+            />
+            <button onclick="loadMovies()"><i class="fa-solid fa-magnifying-glass icon"></i></button> 
+              
+            
           </div>
         </div>
       </div>
-      <!-- end of logo -->
-
-      <!-- search container -->
-      <div class="search-container">
-        <div class="search-element">
-          <h3>Search Movie:</h3>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Search Movie Title ..."
-            id="movie-search-box"
-            onkeyup="findMovies()"
-            onclick="findMovies()"
-          />
-
-          <div class="search-list" id="search-list">
-            <!-- list here -->
-            <!-- <div class = "search-list-item">
-                        <div class = "search-item-thumbnail">
-                            <img src = "medium-cover.jpg">
-                        </div>
-                        <div class = "search-item-info">
-                            <h3>Guardians of the Galaxy Vol. 2</h3>
-                            <p>2017</p>
-                        </div>
-                    </div> -->
-          </div>
-        </div>
-      </div>
-      <!-- end of search container -->
-
-      <!-- result container -->
-      <div class="container">
-        <div class="result-container">
-          <div class="result-grid" id="result-grid">
-            <!-- movie information here -->
-            <!-- <div class = "movie-poster">
-                        <img src = "medium-cover.jpg" alt = "movie poster">
-                    </div>
-                    <div class = "movie-info">
-                        <h3 class = "movie-title">Guardians of the Galaxy Vol. 2</h3>
-                        <ul class = "movie-misc-info">
-                            <li class = "year">Year: 2017</li>
-                            <li class = "rated">Ratings: PG-13</li>
-                            <li class = "released">Released: 05 May 2017</li>
-                        </ul>
-                        <p class = "genre"><b>Genre:</b> Action, Adventure, Comedy</p>
-                        <p class = "writer"><b>Writer:</b> James Gunn, Don Abnett, Andy Lanning</p>
-                        <p class = "actors"><b>Actors: </b>Chris Pratt, Zoe Saldana, Dave Bautista</p>
-                        <p class = "plot"><b>Plot:</b> The Guardians struggle to keep together as a team while dealing with their personal family issues, notably Star-Lord's ecounter with his father the ambitious celestial being Ego.</p>
-                        <p class = "language"><b>Language:</b> English</p>
-                        <p class = "awards"><b><i class = "fas fa-award"></i></b> Nominated for 1 Oscar</p>
-                    </div> -->
-          </div>
-        </div>
-      </div>
-      <!-- end of result container -->
+      <div class="overlay"></div>
     </div>
-
-    <!-- movie app js -->
-    
+    <div class="search__results">
+      <h2>Search results: (fast)</h2>
+      <div class="movie__results">
+        <div class="result__container">
+          <figure class="poster__img">
+            <img
+              src="#"
+              alt=""
+            />
+          </figure>
+          <div>
+            <h3>Movie Title</h3>
+            <p>Movie Year</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
