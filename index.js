@@ -2,48 +2,79 @@
 // http://www.omdbapi.com/?apikey=[yourkey]&
 // http://img.omdbapi.com/?apikey=[yourkey]&
 
-const movieResultsEl = document.querySelector(".movie__results");
+document.addEventListener('DOMContentLoaded', () => {
+  const searchInput = document.getElementById('searchInput');
+  const searchButton = document.getElementById('searchButton');
+  const movieGrid = document.getElementById('movieGrid');
+  const loadingSpinner = document.getElementById('loadingSpinner');
 
+  async function searchMovies(query) {
+      loadingSpinner.classList.remove('hidden');
+      movieGrid.innerHTML = '';
 
-async function search(){
-    const data = await fetch(`https://omdbapi.com/?apikey=9afe3bdf&s=fast`)
-    const result = await data.json()
-    movieResultsEl.innerHTML = result.Search((data) => resultHTML(data)).join("");
-    console.log(result)
+      try {
+          const response = await fetch(
+              `https://www.omdbapi.com/?apikey=9afe3bdf&s=${query}&type=movie`
+          );
+          const data = await response.json();
 
-}
-
-search()
-
-function displayMovieList(movies) {
-  if (movies) {
- movieResultsEl.innerHTML = movies.map((data) => resultHTML(data)).join("");
+          if (data.Response === "True") {
+              const movies = data.Search.slice(0, 10);
+              displayMovies(movies);
+          } else {
+              showError("No movies found. Please try a different search term.");
+          }
+      } catch (error) {
+          showError("Failed to fetch movies. Please try again later.");
+      } finally {
+          loadingSpinner.classList.add('hidden');
+      }
   }
- 
- }
 
- function loadMovies(searchTerm) {
-  fetch(`https://omdbapi.com/?apikey=9afe3bdf&s=${searchTerm}`)
-  .then((response) => response.json())
-  .then((data) => {
- if (data.Search) {
- displayMovieList(data.Search);
+  function displayMovies(movies) {
+      movieGrid.innerHTML = movies
+          .map(
+              (movie) => `
+              <div class="movie__card">
+                  <img 
+                      src="${movie.Poster !== 'N/A' ? movie.Poster : 'assets/placeholder.png'}" 
+                      alt="${movie.Title}"
+                      class="movie__poster"
+                  >
+                  <div class="movie__info">
+                      <h3 class="movie__title">${movie.Title}</h3>
+                      <div class="movie__details">
+                          <span>${movie.Year}</span>
+                          <span>${movie.Type}</span>
+                      </div>
+                  </div>
+              </div>
+          `
+          )
+          .join('');
   }
-  });
- }
 
-function resultHTML(data) {
-    return `<div class="result__container">
-          <figure class="poster__img">
-            <img
-              src="${data.Poster}"
-              alt=""
-            />
-          </figure>
-          <div>
-            <h3>${data.Title}</h3>
-            <p>${data.Year}</p>
+  function showError(message) {
+      movieGrid.innerHTML = `
+          <div style="text-align: center; color: #f87171; grid-column: 1/-1; padding: 2rem;">
+              ${message}
           </div>
-        </div>`
-}
+      `;
+  }
 
+  searchButton.addEventListener('click', () => {
+      const query = searchInput.value.trim();
+      if (query) {
+          searchMovies(query);
+      }
+  });
+
+  searchInput.addEventListener('keypress', (event) => {
+      if (event.key === 'Enter') {
+          const query = searchInput.value.trim();
+          if (query) {
+              searchMovies(query);
+          }
+      }
+  });
+});

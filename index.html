@@ -4,12 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <script src="https://kit.fontawesome.com/54f426de4c.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="styles.css" />
     <script src="index.js" defer></script>
-    <script
-      src="https://kit.fontawesome.com/54f426de4c.js"
-      crossorigin="anonymous"
-    ></script>
   </head>
   <body>
     <div class="container">
@@ -35,21 +32,34 @@
             </ul>
           </div>
         </nav>
-        <main class="container">
-          <div class="hero">
-              <h1 class="title">Find Your Next Movie</h1>
-              <p class="subtitle">Enter a keyword to discover amazing movies. We'll help you find exactly what you're looking for.</p>
-          </div>
-  
-          <div class="search__container">
-              <input type="text" id="searchInput" placeholder="Enter a movie keyword..." class="search__input">
-              <button id="searchButton" class="search__button">
-                  <span>Search</span>
-              </button>
-          </div>
-  
-          <div id="loadingSpinner" class="loading-spinner hidden"></div>
-          <div id="movieGrid" class="movie-grid"></div>
-      </main>
-  </body>
+      </div>
+    </div>
+    <main class="container">
+      <div class="hero">
+        <h1 class="title">Find Your Next Movie</h1>
+        <p class="subtitle">
+          Enter a keyword to discover amazing movies. We'll help you find
+          exactly what you're looking for.
+        </p>
+      </div>
+
+      <div class="search__container">
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Enter a movie keyword..."
+          class="search__input"
+        />
+        <button id="searchButton" class="search__button">GO!</button>
+      </div>
+
+     
+    </main>
+    <div class="results__container">
+    <div id="loadingSpinner" class="loading__spinner hidden"> 
+      <i class="fas fa-spinner"></i>
+    </div>
+    <div id="movieGrid" class="movie__grid"></div>
+  </div>
+    </body>
 </html>

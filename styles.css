@@ -6,7 +6,6 @@
   margin: 0;
   box-sizing: border-box;
   font-family: "Inter", serif;
-  color: #243e63;
 }
 
 html {
@@ -46,6 +45,10 @@ li {
     background-color: #292929;
 }
 
+.results__container {
+    background-color: white;
+}
+
 .row {
     width: 100%;
     max-width: 1200px;
@@ -58,7 +61,6 @@ li {
     padding: 0 20px;
     display: flex;
     justify-content: space-between;
-   
 }
 
 .nav__logo {
@@ -153,21 +155,15 @@ li {
 .search__button {
     border-radius: 16px;
     font-size: 36px;
+    margin-left: 8px;
     padding: 0 16px;
     background-color: #D96B8C;
     color: #fff;
+    border: 2px solid #D96B8C;
 }
 
-.fa-magnifying-glass {
-    position: relative;
-    right: 50px;
-    color: #D96B8C;
-    font-size: 36px;
-    cursor: pointer;
-} 
-
-.fa-magnifying-glass:hover {
-    color: #56092e;
+.search__button:hover {
+    background-color: #56092e;
     transition: all 300ms ease;
 }
 
@@ -175,31 +171,88 @@ li {
 MOVIE RESULTS
 */
 
-.search__results {
-display: flex;
-flex-direction: column;
-align-items: center;
-
-
-}
-
-.result__container {
-    background-color: #fff;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    margin: 10px;
-    transition: 0.3s;
-    cursor: pointer;
-    border-radius: 10px;
+#movieGrid {
     width: 100%;
-    max-width: 750px;
-    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.poster__img {
+.movie__grid {
+    background-color: white;
     display: flex;
-    height: 250px;
-    margin: 16px;
-    border: 2px solid lightblue;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    
+    flex-wrap: wrap;
+}
+
+.movie__card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: border-color 0.3s;
+    padding: 10px;
+    width: 25%;
+}
+
+.movie__card:hover {
+    border-color: #D96B8C;
+}
+
+.movie__poster {
+    width: 100%;
+    aspect-ratio: 2/3;
+    object-fit: cover;
+}
+
+.movie__info {
+    padding: 10px;
+}
+
+.movie__title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+
+.movie__details {
+    display: flex;
+    justify-content: space-between;
+    color: #9b9b9b;
+    font-size: 14px;
+}
+
+/* 
+
+Loading
+
+*/
+
+.loading__spinner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 60px;
+    font-size: 60px;
+    color: #D96B8C;
+}
+
+.fa-spinner {
+    animation: rotate 600ms infinite linear;
+  }
+
+  @keyframes rotate {
+    0% {
+      transform: rotate(0);
+    }
+  
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+.hidden {
+    display: none;
 }
