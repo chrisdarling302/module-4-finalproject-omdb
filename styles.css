@@ -256,3 +256,14 @@ Loading
 .hidden {
     display: none;
 }
+
+/*
+Responsive
+
+SMALL PHONES, LARGE SMARTPHONES */
+
+@media (max-width: 480px) {
+    .nav_link :not:last-child {
+        display: none;
+    } 
+}
