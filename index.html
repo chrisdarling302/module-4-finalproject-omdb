@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="https://kit.fontawesome.com/54f426de4c.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/54f426de4c.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="styles.css" />
     <script src="index.js" defer></script>
   </head>
@@ -19,7 +22,9 @@
             </div>
             <ul class="nav__links">
               <li>
-                <a href="#" class="nav__link link__hover-effect nav__link--resp">Home</a>
+                <a href="#" class="nav__link link__hover-effect nav__link--resp"
+                  >Home</a
+                >
               </li>
               <li>
                 <a href="#" class="nav__link link__hover-effect nav__link--resp"
@@ -51,15 +56,20 @@
           class="search__input"
         />
         <button id="searchButton" class="search__button">GO!</button>
+        <div class="filter__container hidden" id="filterContainer">
+          <label for="sortOrder">Sort by Year:</label>
+          <select id="sortOrder" class="sort__select">
+            <option value="desc">Newest to Oldest</option>
+            <option value="asc">Oldest to Newest</option>
+          </select>
+        </div>
       </div>
-
-     
     </main>
     <div class="results__container">
-    <div id="loadingSpinner" class="loading__spinner hidden"> 
-      <i class="fas fa-spinner"></i>
+      <div id="loadingSpinner" class="loading__spinner hidden">
+        <i class="fas fa-spinner"></i>
+      </div>
+      <div id="movieGrid" class="movie__grid"></div>
     </div>
-    <div id="movieGrid" class="movie__grid"></div>
-  </div>
-    </body>
+  </body>
 </html>
