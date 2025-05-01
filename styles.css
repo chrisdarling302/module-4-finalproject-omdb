@@ -138,24 +138,28 @@ li {
 
 .search__container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   padding: 20px;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .search__input {
   font-size: 36px;
   border-radius: 16px;
   padding-left: 16px;
+  margin-bottom: 8px;
 }
 
 .search__button {
   border-radius: 16px;
   font-size: 36px;
-  margin-left: 8px;
   padding: 0 16px;
   background-color: #d96b8c;
   color: #fff;
   border: 2px solid #d96b8c;
+  margin-bottom: 8px;
 }
 
 .search__button:hover {
@@ -167,18 +171,19 @@ li {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  max-width: 600px;
+  max-width: 300px;
   margin: 1rem auto;
   padding: 0.5rem;
   background-color: rgba(255, 255, 255, 0.05);
   border-radius: 0.25rem;
+  color: white;
 }
 
 .sort__select {
   padding: 0.5rem;
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 0.25rem;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgb(93, 88, 88);
   color: white;
   cursor: pointer;
 }

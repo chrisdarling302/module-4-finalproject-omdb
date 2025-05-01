@@ -15,25 +15,31 @@ document.addEventListener("DOMContentLoaded", () => {
   async function searchMovies(query) {
     loadingSpinner.classList.remove("hidden");
     movieGrid.innerHTML = "";
+    filterContainer.classList.add('hidden');
 
     try {
       const response = await fetch(
-        `https://www.omdbapi.com/?apikey=9afe3bdf&s=${query}&type=movie`
+          `https://www.omdbapi.com/?apikey=9afe3bdf&s=${query}&type=movie`
       );
       const data = await response.json();
 
       if (data.Response === "True") {
-        const movies = data.Search.slice(0, 10);
-        displayMovies(movies);
+          currentMovies = data.Search.slice(0, 10);
+          if (currentMovies.length > 0) {
+              filterContainer.classList.remove('hidden');
+              sortMoviesAndDisplay();
+          } else {
+              showError("No movies found. Please try a different search term.");
+          }
       } else {
-        showError("No movies found. Please try a different search term.");
+          showError("No movies found. Please try a different search term.");
       }
-    } catch (error) {
+  } catch (error) {
       showError("Failed to fetch movies. Please try again later.");
-    } finally {
-      loadingSpinner.classList.add("hidden");
-    }
+  } finally {
+      loadingSpinner.classList.add('hidden');
   }
+}
 
   function sortMoviesAndDisplay() {
     const sortedMovies = [...currentMovies].sort((a, b) => {
@@ -92,12 +98,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  searchInput.addEventListener("keypress", (event) => {
-    if (event.key === "Enter") {
-      const query = searchInput.value.trim();
-      if (query) {
-        searchMovies(query);
-      }
+  searchInput.addEventListener('keypress', (event) => {
+    if (event.key === 'Enter') {
+        const query = searchInput.value.trim();
+        if (query) {
+            searchMovies(query);
+        }
     }
-  });
+});
+
+sortOrder.addEventListener('change', () => {
+    sortMoviesAndDisplay();
+});
 });
